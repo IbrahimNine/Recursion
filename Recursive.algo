@@ -1,0 +1,34 @@
+FUNCTION checkIF(text: STRING, startIndex, endIndex: INTEGER) : BOOLEAN
+
+BEGIN
+    IF (startIndex >= endIndex) THEN
+        RETURN TRUE ;
+    ELSE_IF (text[startIndex] = text[endIndex]) THEN
+        RETURN checkIF(text, startIndex + 1, endIndex - 1)
+    ELSE
+        RETURN FALSE ;
+    END_IF
+END
+
+ALGORITHM Is_palindrome
+VAR
+    text:STRING;
+    start, end; INTEGER;
+    result : BOOLEAN;
+BEGIN
+
+    Write("Enter your word to check if it's palindrome or not: ");
+    Read(text);
+
+
+    start:=0;
+    end:= text.length - 1;
+
+    result:= checkIF(text,start,end);
+
+    IF (result = TRUE) THEN
+        Write("the word you entered is palindrome");
+    ELSE
+        Write("the word you entered is not palindrome");
+    END_IF
+END
